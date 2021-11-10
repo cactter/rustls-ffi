@@ -14,6 +14,7 @@ jobs:
           persist-credentials: false
       - name: Setup PATH for CL.EXE
         uses: ilammy/msvc-dev-cmd@v1      
+      - run: rm /usr/bin/link
       - run: cl -Focommon.obj -c tests/common.c -MD -Zi -W3 -O2 -I./src -D_WIN32_WINNT=0x601 -Dssize_t=int -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_WARNINGS
       - run: cl -Foclient.obj -c tests/client.c -MD -Zi -W3 -O2 -I./src -D_WIN32_WINNT=0x601 -Dssize_t=int -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_WARNINGS
       - run: link /incremental:no /map /out:target/client.exe  common.obj client.obj target/release/rustls_ffi.lib advapi32.lib userenv.lib ws2_32.lib > link.tmp
