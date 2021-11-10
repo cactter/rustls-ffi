@@ -45,7 +45,6 @@ jobs:
           persist-credentials: false
       - name: Setup PATH for CL.EXE
         uses: ilammy/msvc-dev-cmd@v1      
-      - run: link --help
       - run: make -f Makefile.Windows
 
   ensure-header-updated:
