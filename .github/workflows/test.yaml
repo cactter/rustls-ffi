@@ -45,6 +45,8 @@ jobs:
           persist-credentials: false
       - uses: ilammy/msvc-dev-cmd@v1
       - run: echo %PATH%
+      - run: link /h
+      - run: get-command link.exe
       - run: where link.exe
       - run: where link
       - run: make -f Makefile.Windows
