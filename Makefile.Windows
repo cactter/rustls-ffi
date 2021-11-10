@@ -16,14 +16,14 @@ USE_CLANG_CL ?= 0
 
 green_msg = @echo -e "\e[1;32m$(strip $(1))\e[0m"
 
-CFLAGS = -nologo -MD -Zi -W3 -O2   \
+CFLAGS = -MD -Zi -W3 -O2   \
          -I./src                   \
          -D_WIN32_WINNT=0x601      \
          -Dssize_t=int             \
          -D_CRT_SECURE_NO_WARNINGS \
          -D_CRT_NONSTDC_NO_WARNINGS
 
-LDFLAGS = /nologo /incremental:no /debug /map /verbose
+LDFLAGS = /incremental:no /map /verbose
 
 ifeq ($(USE_CLANG_CL),1)
   CC = clang-cl
