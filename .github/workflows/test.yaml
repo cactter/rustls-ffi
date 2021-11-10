@@ -43,6 +43,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
+      - run: echo %PATH%
+      - run: where link.exe
+      - run: where link
       - run: make -f Makefile.Windows
 
   ensure-header-updated:
