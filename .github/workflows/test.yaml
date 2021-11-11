@@ -12,13 +12,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - name: Setup PATH for CL.EXE
-        uses: ilammy/msvc-dev-cmd@v1      
-
-      - run: cargo build
       - run: rm "C:\Program Files\Git\usr\bin\link.exe"
       - run: rm "C:\msys64\usr\bin\link.exe"
       - run: Get-Command link.exe
+      - name: Setup PATH for CL.EXE
+        uses: ilammy/msvc-dev-cmd@v1      
+      - run: Get-Command link.exe
+      - run: cargo build
       - run: cl -Focommon.obj -c tests/common.c -MD -Zi -W3 -O2 -I./src -D_WIN32_WINNT=0x601 -Dssize_t=int -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_WARNINGS
       - run: cl -Foclient.obj -c tests/client.c -MD -Zi -W3 -O2 -I./src -D_WIN32_WINNT=0x601 -Dssize_t=int -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_WARNINGS
       - run: link.exe /incremental:no /map /out:target/client.exe  common.obj client.obj target/debug/rustls_ffi.lib advapi32.lib userenv.lib ws2_32.lib > link.tmp
