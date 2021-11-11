@@ -14,7 +14,6 @@ jobs:
           persist-credentials: false
       - run: rm "C:\Program Files\Git\usr\bin\link.exe"
       - run: rm "C:\msys64\usr\bin\link.exe"
-      - run: Get-Command link.exe
       - name: Setup PATH for CL.EXE
         uses: ilammy/msvc-dev-cmd@v1      
       - run: Get-Command link.exe
