@@ -48,7 +48,7 @@ jobs:
       # Remove link.exe from non-MSVC packages that interferes with MSVC link
       - run: rm "C:\Program Files\Git\usr\bin\link.exe"
       - run: rm "C:\msys64\usr\bin\link.exe"
-      - run: make -f Makefile.Windows
+      - run: make -f Makefile.Windows test
 
   ensure-header-updated:
     runs-on: ubuntu-latest
