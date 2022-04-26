@@ -574,6 +574,8 @@ impl rustls_client_config {
 mod tests {
     use std::ptr::{null, null_mut};
 
+    use crate::client::rustls_client_config;
+
     use super::*;
 
     #[test]
@@ -646,5 +648,6 @@ mod tests {
             0
         );
         rustls_connection::rustls_connection_free(conn);
+        rustls_client_config::rustls_client_config_free(config);
     }
 }

@@ -747,6 +747,7 @@ mod tests {
             &certified_key,
             1,
         );
+        rustls_certified_key::rustls_certified_key_free(certified_key);
 
         let config = rustls_server_config_builder::rustls_server_config_builder_build(builder);
         assert_ne!(config, null());
@@ -791,5 +792,6 @@ mod tests {
             0
         );
         rustls_connection::rustls_connection_free(conn);
+        rustls_server_config::rustls_server_config_free(config);
     }
 }
